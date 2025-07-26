@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Enemy : Entity
 {
-
     public static event Action<Enemy, string> onEnemyCreate;
     public static event Action<Enemy> onEnemyKill;
 
