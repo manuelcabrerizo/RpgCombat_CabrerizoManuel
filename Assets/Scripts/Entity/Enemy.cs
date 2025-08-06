@@ -16,7 +16,7 @@ public class Enemy : Entity
         searchStrategies.Add(new EnemyRangeSearchStartegy());
     }
 
-    public override void ProcessTurn(Map map)
+    public override void ProcessTurn()
     {
         time += Time.deltaTime;
         if (time >= 1)
@@ -27,17 +27,17 @@ public class Enemy : Entity
                 int dir = UnityEngine.Random.Range(0, 2) == 0 ? 1 : -1;
                 if (UnityEngine.Random.Range(0, 2) == 0)
                 {
-                    if (IsValidMove(dir, 0, map))
+                    if (IsValidMove(dir, 0))
                     {
-                        Move(dir, 0, map);
+                        Move(dir, 0);
                         moveDone = true;
                     }
                 }
                 else
                 {
-                    if (IsValidMove(0, dir, map))
+                    if (IsValidMove(0, dir))
                     {
-                        Move(0, dir, map);
+                        Move(0, dir);
                         moveDone = true;
                     }
                 }

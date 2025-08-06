@@ -1,7 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-
 public abstract class Entity : MonoBehaviour
 {
     public static event Action<Entity> onEntityCreate;
@@ -15,6 +13,8 @@ public abstract class Entity : MonoBehaviour
     public int MoveLeft { get; private set; }
     public bool TurnInitialize { get; private set; }
     private bool actionPerformed;
+
+    protected Map map = null;
 
     private void Awake()
     {
@@ -33,6 +33,7 @@ public abstract class Entity : MonoBehaviour
 
     public void Initialize(Map map)
     {
+        this.map = map;
         Tile tile = map.GetRandomEmptyTile();
         tile.Entity = this;
         transform.SetParent(tile.Go.transform);
@@ -40,7 +41,7 @@ public abstract class Entity : MonoBehaviour
         SetTile(tile.X, tile.Y);
     }
 
-    public abstract void ProcessTurn(Map map);
+    public virtual void ProcessTurn() { }
 
     public void SetTile(int x, int y)
     {
@@ -56,7 +57,6 @@ public abstract class Entity : MonoBehaviour
 
     public void Heal(Entity target)
     {
-        Debug.Log(Name + " Heal " + target.Name);
         target.Life += Data.HealAmount;
         onEntityLifeChange?.Invoke(target);
         actionPerformed = true;
@@ -64,26 +64,23 @@ public abstract class Entity : MonoBehaviour
 
     public void RangeAttack(Entity target)
     {
-        Debug.Log(Name + " Range Attack " + target.Name);
         target.TakeDamage(Data.RangeAttack);
         actionPerformed = true;
     }
 
     public void MeleeAttack(Entity target)
     {
-        Debug.Log(Name + " Melee Attack " + target.Name);
         target.TakeDamage(Data.MeleAttack);
         actionPerformed = true;
     }
 
     public void PassTurn()
     {
-        Debug.Log(Name + " Pass Turn ");
         actionPerformed = true;
     }
 
 
-    public virtual void OnTurnBegin(Map map)
+    public virtual void OnTurnBegin()
     {
         TurnInitialize = true;
     }
@@ -94,7 +91,7 @@ public abstract class Entity : MonoBehaviour
         TurnInitialize = false;
     }
 
-    public bool IsValidMove(int xMovement, int yMovement, Map map)
+    public bool IsValidMove(int xMovement, int yMovement)
     {
         int newX = X + xMovement;
         int newY = Y + yMovement;
@@ -104,11 +101,11 @@ public abstract class Entity : MonoBehaviour
         return newTile.IsEmpty();
     }
 
-    public bool Move(int xMovement, int yMovement, Map map)
+    public bool Move(int xMovement, int yMovement)
     {
         int newX = X + xMovement;
         int newY = Y + yMovement;
-        if (IsValidMove(xMovement, yMovement, map))
+        if (IsValidMove(xMovement, yMovement))
         {
             Tile newTile = map.GetTiles(newX, newY);
             Tile currentTile = map.GetTiles(X, Y);

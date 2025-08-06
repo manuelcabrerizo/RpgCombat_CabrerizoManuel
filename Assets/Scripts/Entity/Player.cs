@@ -19,49 +19,30 @@ public class Player : Entity
         searchStrategies.Add(new PlayerRangeSearchStrategy());
     }
 
-    public override void OnTurnBegin(Map map)
+    public override void OnTurnBegin()
     {
-        base.OnTurnBegin(map);
-        foreach (var strategy in searchStrategies)
-        {
-            strategy.Search(this, map);
-        }
+        base.OnTurnBegin();
+
+        InputManager.onMoveUp += OnMoveUp;
+        InputManager.onMoveDown += OnMoveDown;
+        InputManager.onMoveLeft += OnMoveLeft;
+        InputManager.onMoveRight += OnMoveRight;
+
+        UpdateTargets();
+        
         onPlayerTurnBegin.Invoke(this);
     }
 
     public override void OnTurnEnd()
     {
         base.OnTurnEnd();
+
+        InputManager.onMoveUp -= OnMoveUp;
+        InputManager.onMoveDown -= OnMoveDown;
+        InputManager.onMoveLeft -= OnMoveLeft;
+        InputManager.onMoveRight -= OnMoveRight;
+
         onPlayerTurnEnd?.Invoke(this);
-    }
-
-    public override void ProcessTurn(Map map)
-    {
-        bool moveWasValid = false;
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            moveWasValid |= Move(0, 1, map);
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            moveWasValid |= Move(0, -1, map);
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            moveWasValid |= Move(-1, 0, map);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            moveWasValid |= Move(1, 0, map);
-        }
-
-        if (moveWasValid)
-        {
-            foreach (var strategy in searchStrategies)
-            {
-                strategy.Search(this, map);
-            }
-        }
     }
 
     protected override void TakeDamage(int damage)
@@ -71,6 +52,42 @@ public class Player : Entity
         {
             onPlayerKill?.Invoke(this);
             gameObject.SetActive(false);
+        }
+    }
+
+    private void OnMoveUp()
+    {
+        MoveTo(0, 1);
+    }
+
+    private void OnMoveDown()
+    {
+        MoveTo(0, -1);
+    }
+
+    private void OnMoveLeft()
+    {
+        MoveTo(-1, 0);
+    }
+
+    private void OnMoveRight() 
+    {
+        MoveTo(1, 0);
+    }
+
+    private void MoveTo(int x, int y)
+    {
+        if (HaveMovements() && Move(x, y))
+        {
+            UpdateTargets();
+        }
+    }
+
+    private void UpdateTargets()
+    {
+        foreach (var strategy in searchStrategies)
+        {
+            strategy.Search(this, map);
         }
     }
 }
