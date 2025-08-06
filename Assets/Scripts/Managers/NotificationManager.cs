@@ -7,9 +7,24 @@ using UnityEngine;
 
 public class NotificationManager : MonoBehaviour
 {
+    private static NotificationManager instance = null;
+
 #if UNITY_ANDROID
     private static string CHANNEL_ID = "notis";
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
     private void Start()
     {
         if (!PlayerPrefs.HasKey("NotisChannel_Created"))

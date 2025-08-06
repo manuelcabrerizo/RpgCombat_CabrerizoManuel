@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public static event Action<string> onGameEnd;
 
     [SerializeField] private Transform mapTransform;
-    [SerializeField] private AdsManager adsManager;
 
     private Map map;
     private List<Entity> entities = new List<Entity>();
@@ -109,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     private void OnGameEnd()
     {
-        adsManager.ShowInterstitial();
+        AdsManager.onShowInterstitial?.Invoke();
         isRunning = false;
     }
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 #if UNITY_ANDROID
@@ -9,6 +10,11 @@ public class AdsManager : MonoBehaviour
 , IUnityAdsInitializationListener
 #endif
 {
+    private static AdsManager instance = null;
+
+    public static Action onShowBanner;
+    public static Action onShowInterstitial;
+
     [SerializeField] private string androidGameId = "5917824";
     [SerializeField] private bool testMode = true;
     private string gameId;
@@ -35,8 +41,19 @@ public class AdsManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
 #if UNITY_ANDROID
-        gameId = androidGameId;
+            gameId = androidGameId;
 #elif UNITY_EDITOR
             gameId = androidGameId;
 #endif
@@ -48,7 +65,16 @@ public class AdsManager : MonoBehaviour
         {
             Advertisement.Initialize(gameId, testMode, this);
         }
+
+        onShowBanner += ShowBanner;
+        onShowInterstitial += ShowInterstitial;
 #endif
+    }
+
+    private void OnDestroy()
+    {
+        onShowBanner -= ShowBanner;
+        onShowInterstitial -= ShowInterstitial;
     }
 
     public bool IsReady()
@@ -56,12 +82,12 @@ public class AdsManager : MonoBehaviour
         return isReady;
     }
 
-    public void ShowBanner()
+    private void ShowBanner()
     {
         banner.Show();
     }
 
-    public void ShowInterstitial()
+    private void ShowInterstitial()
     {
         interstitial.Show();
     }
