@@ -73,7 +73,7 @@ public class NotificationManager : MonoBehaviour
         var notification10Minutes = new AndroidNotification();
         notification10Minutes.Title = "La Batalla te espera, VUELVE AL COMBATE!";
         notification10Minutes.Text = "Manuel Cabrerizo";
-        notification10Minutes.FireTime = System.DateTime.Now.AddMinutes(1);
+        notification10Minutes.FireTime = System.DateTime.Now.AddMinutes(10);
         AndroidNotificationCenter.SendNotification(notification10Minutes, CHANNEL_ID);
         Debug.Log("Notifications Scheduled!!");
     }

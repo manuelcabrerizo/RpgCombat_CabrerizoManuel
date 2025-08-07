@@ -1,0 +1,5 @@
+C:/ImageCampus/PortabilidadOptimizacion/RpgCombat/.utmp/RelWithDebInfo/1qw2gl1p/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/ImageCampus/PortabilidadOptimizacion/RpgCombat/.utmp/RelWithDebInfo/1qw2gl1p/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/ImageCampus/PortabilidadOptimizacion/RpgCombat/.utmp/RelWithDebInfo/1qw2gl1p/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/ImageCampus/PortabilidadOptimizacion/RpgCombat/.utmp/RelWithDebInfo/1qw2gl1p/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+C:/ImageCampus/PortabilidadOptimizacion/RpgCombat/.utmp/RelWithDebInfo/1qw2gl1p/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir

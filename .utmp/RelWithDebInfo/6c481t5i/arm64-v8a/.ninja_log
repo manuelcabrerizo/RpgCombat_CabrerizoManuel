@@ -1,13 +1,5 @@
 # ninja log v5
-66	387	7761311685777191	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	6d84e279f6b9ac25
-13	1867	7761311700514930	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	e33756cd337d13b2
-387	834	7761311689231938	C:/ImageCampus/PortabilidadOptimizacion/RpgCombat/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6c481t5i/obj/arm64-v8a/libswappywrapper.so	19b78c731ef7c9ad
-42	1443	7761311696370394	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	bf53cab887711389
-28	1604	7761311697980960	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	76bc15b2cad9531f
-50	1399	7761311695812849	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	8d8588560e83918
-21	1428	7761311696133182	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	750605594007f97b
-58	1518	7761311697077572	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	1927618d179e2e13
-36	1763	7761311699593219	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	cc8cb97e29267ae4
-1867	2075	7761311701875023	C:/ImageCampus/PortabilidadOptimizacion/RpgCombat/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6c481t5i/obj/arm64-v8a/libgame.so	2d85cf4624207089
-1	117	7761334139841407	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	6d84e279f6b9ac25
-118	360	7761334141675671	C:/ImageCampus/PortabilidadOptimizacion/RpgCombat/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6c481t5i/obj/arm64-v8a/libswappywrapper.so	19b78c731ef7c9ad
+1	522	7762345201585343	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	6d84e279f6b9ac25
+523	737	7762345202983106	C:/ImageCampus/PortabilidadOptimizacion/RpgCombat/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6c481t5i/obj/arm64-v8a/libswappywrapper.so	19b78c731ef7c9ad
+2	128	7762397341574550	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	6d84e279f6b9ac25
+128	338	7762397343178543	C:/ImageCampus/PortabilidadOptimizacion/RpgCombat/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6c481t5i/obj/arm64-v8a/libswappywrapper.so	19b78c731ef7c9ad
